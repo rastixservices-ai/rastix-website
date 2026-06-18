@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RASTIX — IT Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0d14;
+    --bg-surface: #111520;
+    --bg-card: #161b28;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(59,130,246,0.3);
+    --blue-primary: #3b82f6;
+    --blue-light: #60a5fa;
+    --blue-glow: rgba(59,130,246,0.15);
+    --blue-dark: #1d4ed8;
+    --text-primary: #f0f4ff;
+    --text-secondary: #8b9ab5;
+    --text-muted: #4a5568;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    background: rgba(10,13,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--blue-primary); }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  nav ul a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--blue-primary);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    border: 0.5px solid var(--border-accent);
+    background: var(--blue-glow);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-primary);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  .hero h1 .accent { color: var(--blue-primary); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue-primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--text-secondary);
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    border: 0.5px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--blue-primary); color: var(--text-primary); }
+
+  /* STATS */
+  .stats {
+    padding: 60px 5%;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    background: var(--bg-surface);
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--blue-light);
+    display: block;
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 100px 5%;
+  }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    max-width: 540px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .service-card:hover { background: #1a2135; }
+
+  .service-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--blue-glow);
+    border: 0.5px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 18px;
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* WHY */
+  .why {
+    padding: 100px 5%;
+    background: var(--bg-surface);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .why-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .why-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue-primary);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .why-item h4 {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 3px;
+    color: var(--text-primary);
+  }
+
+  .why-item p { font-size: 14px; color: var(--text-secondary); }
+
+  .why-visual {
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .terminal-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .terminal-dot:nth-child(1) { background: #ff5f56; }
+  .terminal-dot:nth-child(2) { background: #ffbd2e; }
+  .terminal-dot:nth-child(3) { background: #27c93f; }
+
+  .terminal-line {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .terminal-line .prompt { color: var(--blue-primary); }
+  .terminal-line .output { color: #4ade80; }
+  .terminal-line .comment { color: var(--text-muted); }
+
+  /* CONTACT */
+  .contact {
+    padding: 100px 5%;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-detail .icon {
+    color: var(--blue-primary);
+    font-size: 16px;
+    width: 20px;
+  }
+
+  form {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%238b9ab5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .form-group select option { background: var(--bg-card); color: var(--text-primary); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue-primary);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--text-muted); }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    background: var(--blue-primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: -0.25rem;
+  }
+
+  /* SUCCESS */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .form-success h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    color: #4ade80;
+  }
+
+  .form-success p { color: var(--text-secondary); font-size: 14px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2.5rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-logo span { color: var(--blue-primary); }
+
+  footer p { font-size: 13px; color: var(--text-muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">RAST<span>IX</span></a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">IT Services &amp; Solutions</div>
+    <h1>Technology that<br>moves your <span class="accent">business forward</span></h1>
+    <p class="hero-sub">RASTIX delivers end-to-end IT services — from cloud infrastructure and automation to AI integration and consulting — built for businesses that demand reliability.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a conversation</a>
+      <a href="#services" class="btn-secondary">Explore services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-num">100+</span>
+      <p class="stat-label">Projects delivered</p>
+    </div>
+    <div>
+      <span class="stat-num">99.9%</span>
+      <p class="stat-label">Uptime guarantee</p>
+    </div>
+    <div>
+      <span class="stat-num">24/7</span>
+      <p class="stat-label">Operations support</p>
+    </div>
+    <div>
+      <span class="stat-num">50+</span>
+      <p class="stat-label">Happy clients</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <p class="section-label">What we do</p>
+    <h2 class="section-title">Full-spectrum IT services</h2>
+    <p class="section-sub">From strategy to execution — we handle the technology so you can focus on what matters.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud</h3>
+        <p>Architecture, migration, and management across AWS, Azure, and GCP. Scalable, secure, and cost-optimised cloud solutions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Infrastructure</h3>
+        <p>Robust on-premise and hybrid infrastructure design, deployment, and maintenance. Built to last, engineered to scale.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>Consulting</h3>
+        <p>Strategic IT advisory to align your technology investments with business goals. Clear roadmaps, honest advice.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Operations</h3>
+        <p>Managed IT operations, monitoring, and support. Proactive issue resolution before it impacts your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI &amp; Automation</h3>
+        <p>Integrate AI tools and build intelligent automation workflows that reduce manual effort and accelerate output.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Web &amp; Applications</h3>
+        <p>Custom websites and business applications designed to perform — from fast marketing sites to complex internal tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <p class="section-label">Why RASTIX</p>
+        <h2 class="section-title">Your tech partner, not just a vendor</h2>
+        <p class="section-sub" style="margin-bottom: 2.5rem;">We take ownership of outcomes, not just deliverables.</p>
+        <ul class="why-list">
+          <li class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>End-to-end ownership</h4>
+              <p>We manage the full lifecycle — strategy, build, and ongoing support — so nothing falls through the gaps.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Transparent communication</h4>
+              <p>No jargon, no surprises. You get clear updates and direct access to the people doing the work.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Proven across industries</h4>
+              <p>From startups to enterprise, we've delivered reliable IT outcomes across a range of sectors and environments.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-dot"></div>
+            <div>
+              <h4>Security-first mindset</h4>
+              <p>Every solution is designed with security and compliance baked in, not bolted on.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="terminal-bar">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+        </div>
+        <div class="terminal-line"><span class="prompt">$</span> rastix deploy --env production</div>
+        <div class="terminal-line"><span class="comment"># Running infrastructure checks...</span></div>
+        <div class="terminal-line"><span class="output">✓ Cloud resources validated</span></div>
+        <div class="terminal-line"><span class="output">✓ Security policies applied</span></div>
+        <div class="terminal-line"><span class="output">✓ Auto-scaling configured</span></div>
+        <div class="terminal-line"><span class="output">✓ Monitoring active</span></div>
+        <div class="terminal-line" style="margin-top: 0.5rem;"><span class="prompt">$</span> <span class="output">Deployment complete. Uptime: 99.9%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get in touch</p>
+        <h2>Let's talk about what you need</h2>
+        <p>Tell us about your project or challenge. We'll come back to you within one business day with ideas, not a sales pitch.</p>
+        <div class="contact-detail">
+          <span class="icon">✉</span>
+          <span>hello@rastix.com</span>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">📍</span>
+          <span>Australia</span>
+        </div>
+      </div>
+
+      <div>
+        <form action="https://formspree.io/f/xdavraaj" method="POST" id="contactForm">
+          <input type="hidden" name="form-name" value="contact">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+61 4xx xxx xxx">
+          </div>
+          <div class="form-group">
+            <label for="service">Service required</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="cloud">Cloud</option>
+              <option value="infrastructure">Infrastructure</option>
+              <option value="consulting">Consulting</option>
+              <option value="operations">Operations</option>
+              <option value="ai-automation">AI &amp; Automation</option>
+              <option value="web-applications">Web &amp; Applications</option>
+              <option value="other">Other / Multiple</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project, challenge, or question..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message</button>
+          <p class="form-note">We'll respond within one business day.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <h3>✓ Message received</h3>
+          <p>Thanks for reaching out. We'll be in touch within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">RAST<span>IX</span></a>
+  <p>&copy; 2026 RASTIX. All rights reserved.</p>
+</footer>
+
+
+</body>
+</html>
