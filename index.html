@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RASTIX — IT Services</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0d14'/%3E%3Cg transform='translate(32,30)'%3E%3Cpath d='M -20 7 Q -25 7 -25 -1 Q -25 -9 -17 -9 Q -15 -18 -5 -18 Q 5 -19 8 -11 Q 18 -11 18 -1 Q 18 7 11 7 Z' fill='none' stroke='%233b82f6' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='-7' cy='-2' r='2.6' fill='%2360a5fa'/%3E%3Ccircle cx='5' cy='-4' r='2.6' fill='%2360a5fa'/%3E%3Ccircle cx='7' cy='1' r='2.6' fill='%2360a5fa'/%3E%3Cline x1='-7' y1='-2' x2='-3' y2='3' stroke='%2360a5fa' stroke-width='1.2'/%3E%3Cline x1='5' y1='-4' x2='-3' y2='3' stroke='%2360a5fa' stroke-width='1.2'/%3E%3Cline x1='7' y1='1' x2='-3' y2='3' stroke='%2360a5fa' stroke-width='1.2'/%3E%3Ccircle cx='-3' cy='3' r='2.6' fill='%231d4ed8'/%3E%3Cline x1='-3' y1='7' x2='-3' y2='15' stroke='%233b82f6' stroke-width='1.9'/%3E%3Crect x='-15' y='15' width='24' height='7.5' rx='1.5' fill='%231d4ed8'/%3E%3Crect x='-15' y='24.5' width='24' height='7.5' rx='1.5' fill='%233b82f6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,8 +55,11 @@
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-primary);
@@ -63,6 +67,8 @@
   }
 
   .logo span { color: var(--blue-primary); }
+  .logo svg { flex-shrink: 0; }
+  .logo-divider { width: 1px; height: 24px; background: var(--border); }
 
   nav ul {
     display: flex;
@@ -537,8 +543,11 @@
   }
 
   .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
     text-decoration: none;
@@ -600,7 +609,25 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">RAST<span>IX</span></a>
+  <a href="#" class="logo">
+    <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+      <g transform="translate(32,30)">
+        <path d="M -20 7 Q -25 7 -25 -1 Q -25 -9 -17 -9 Q -15 -18 -5 -18 Q 5 -19 8 -11 Q 18 -11 18 -1 Q 18 7 11 7 Z" fill="none" stroke="#3b82f6" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="-7" cy="-2" r="2.6" fill="#60a5fa"/>
+        <circle cx="5" cy="-4" r="2.6" fill="#60a5fa"/>
+        <circle cx="7" cy="1" r="2.6" fill="#60a5fa"/>
+        <line x1="-7" y1="-2" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <line x1="5" y1="-4" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <line x1="7" y1="1" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <circle cx="-3" cy="3" r="2.6" fill="#1d4ed8"/>
+        <line x1="-3" y1="7" x2="-3" y2="15" stroke="#3b82f6" stroke-width="1.9"/>
+        <rect x="-15" y="15" width="24" height="7.5" rx="1.5" fill="#1d4ed8"/>
+        <rect x="-15" y="24.5" width="24" height="7.5" rx="1.5" fill="#3b82f6"/>
+      </g>
+    </svg>
+    <span class="logo-divider"></span>
+    RAST<span>IX</span>
+  </a>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#why">About</a></li>
@@ -811,7 +838,24 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">RAST<span>IX</span></a>
+  <a href="#" class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true">
+      <g transform="translate(32,30)">
+        <path d="M -20 7 Q -25 7 -25 -1 Q -25 -9 -17 -9 Q -15 -18 -5 -18 Q 5 -19 8 -11 Q 18 -11 18 -1 Q 18 7 11 7 Z" fill="none" stroke="#3b82f6" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="-7" cy="-2" r="2.6" fill="#60a5fa"/>
+        <circle cx="5" cy="-4" r="2.6" fill="#60a5fa"/>
+        <circle cx="7" cy="1" r="2.6" fill="#60a5fa"/>
+        <line x1="-7" y1="-2" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <line x1="5" y1="-4" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <line x1="7" y1="1" x2="-3" y2="3" stroke="#60a5fa" stroke-width="1.2"/>
+        <circle cx="-3" cy="3" r="2.6" fill="#1d4ed8"/>
+        <line x1="-3" y1="7" x2="-3" y2="15" stroke="#3b82f6" stroke-width="1.9"/>
+        <rect x="-15" y="15" width="24" height="7.5" rx="1.5" fill="#1d4ed8"/>
+        <rect x="-15" y="24.5" width="24" height="7.5" rx="1.5" fill="#3b82f6"/>
+      </g>
+    </svg>
+    RAST<span>IX</span>
+  </a>
   <p>&copy; 2026 RASTIX. All rights reserved.</p>
 </footer>
 
