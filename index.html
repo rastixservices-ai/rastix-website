@@ -66,7 +66,8 @@
     text-decoration: none;
   }
 
-  .logo span { color: var(--blue-primary); }
+  .logo span { color: inherit; }
+  .logo .logo-text span { color: var(--blue-primary); }
   .logo svg { flex-shrink: 0; }
   .logo-divider { width: 1px; height: 24px; background: var(--border); }
 
@@ -554,7 +555,8 @@
     letter-spacing: -0.02em;
   }
 
-  .footer-logo span { color: var(--blue-primary); }
+  .footer-logo span { color: inherit; }
+  .footer-logo .logo-text span { color: var(--blue-primary); }
 
   footer p { font-size: 13px; color: var(--text-muted); }
 
@@ -625,8 +627,7 @@
         <rect x="-15" y="24.5" width="24" height="7.5" rx="1.5" fill="#3b82f6"/>
       </g>
     </svg>
-    <span class="logo-divider"></span>
-    RAST<span>IX</span>
+    <span class="logo-divider"></span><span class="logo-text">RAST<span>IX</span></span>
   </a>
   <ul>
     <li><a href="#services">Services</a></li>
@@ -853,8 +854,7 @@
         <rect x="-15" y="15" width="24" height="7.5" rx="1.5" fill="#1d4ed8"/>
         <rect x="-15" y="24.5" width="24" height="7.5" rx="1.5" fill="#3b82f6"/>
       </g>
-    </svg>
-    RAST<span>IX</span>
+    </svg><span class="logo-text">RAST<span>IX</span></span>
   </a>
   <p>&copy; 2026 RASTIX. All rights reserved.</p>
 </footer>
