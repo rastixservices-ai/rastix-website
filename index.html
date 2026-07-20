@@ -296,6 +296,10 @@
   }
 
   .service-card:hover { background: #1a2135; }
+  .service-card a.card-link { position: absolute; inset: 0; z-index: 1; }
+  .service-card { position: relative; }
+  .service-card .learn-more { font-size: 13px; color: var(--blue-light); margin-top: 1rem; display: inline-block; }
+
 
   .service-icon {
     width: 40px; height: 40px;
@@ -682,34 +686,46 @@
 
     <div class="services-grid reveal-stagger">
       <div class="service-card">
+        <a href="/cloud" class="card-link" aria-label="Cloud services"></a>
         <div class="service-icon">☁️</div>
         <h3>Cloud</h3>
         <p>Architecture, migration, and management across AWS, Azure, and GCP. Scalable, secure, and cost-optimised cloud solutions.</p>
+        <span class="learn-more">Learn more →</span>
       </div>
       <div class="service-card">
+        <a href="/infrastructure" class="card-link" aria-label="Infrastructure services"></a>
         <div class="service-icon">🏗️</div>
         <h3>Infrastructure</h3>
         <p>Robust on-premise and hybrid infrastructure design, deployment, and maintenance. Built to last, engineered to scale.</p>
+        <span class="learn-more">Learn more →</span>
       </div>
       <div class="service-card">
-        <div class="service-icon">💡</div>
-        <h3>Consulting</h3>
-        <p>Strategic IT advisory to align your technology investments with business goals. Clear roadmaps, honest advice.</p>
+        <a href="/cybersecurity" class="card-link" aria-label="Cybersecurity services"></a>
+        <div class="service-icon">🔐</div>
+        <h3>Cybersecurity</h3>
+        <p>Proactive security across your entire environment — from vulnerability management and identity controls to threat detection and incident response.</p>
+        <span class="learn-more">Learn more →</span>
       </div>
       <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <h3>Operations</h3>
-        <p>Managed IT operations, monitoring, and support. Proactive issue resolution before it impacts your business.</p>
-      </div>
-      <div class="service-card">
+        <a href="/ai-automation" class="card-link" aria-label="AI and Automation services"></a>
         <div class="service-icon">🤖</div>
         <h3>AI &amp; Automation</h3>
         <p>Integrate AI tools and build intelligent automation workflows that reduce manual effort and accelerate output.</p>
+        <span class="learn-more">Learn more →</span>
       </div>
       <div class="service-card">
+        <a href="/applications" class="card-link" aria-label="Applications and Web services"></a>
         <div class="service-icon">🌐</div>
         <h3>Web &amp; Applications</h3>
         <p>Custom websites and business applications designed to perform — from fast marketing sites to complex internal tools.</p>
+        <span class="learn-more">Learn more →</span>
+      </div>
+      <div class="service-card">
+        <a href="/operations" class="card-link" aria-label="Operations and Consulting services"></a>
+        <div class="service-icon">⚙️</div>
+        <h3>Operations &amp; Consulting</h3>
+        <p>Managed IT operations, strategic advisory, and fractional technology leadership. Proactive, accountable, and aligned to your goals.</p>
+        <span class="learn-more">Learn more →</span>
       </div>
     </div>
   </div>
