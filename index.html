@@ -76,6 +76,7 @@
     display: flex;
     gap: 2rem;
     list-style: none;
+    align-items: center;
   }
 
   nav ul a {
@@ -87,6 +88,84 @@
   }
 
   nav ul a:hover { color: var(--text-primary); }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+
+  .nav-dropdown-toggle {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+  }
+
+  .nav-dropdown-toggle:hover { color: var(--text-primary); }
+
+  .nav-dropdown-toggle::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--text-muted);
+    transition: transform 0.2s;
+    margin-top: 1px;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-toggle::after,
+  .nav-dropdown.open .nav-dropdown-toggle::after { transform: rotate(180deg); }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 0.5rem;
+    min-width: 220px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 200;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown.open .nav-dropdown-menu {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown-menu a:hover { background: rgba(59,130,246,0.08); color: var(--text-primary); }
+
+  .nav-dropdown-menu a .menu-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+
+  .nav-dropdown-menu .menu-divider { height: 0.5px; background: var(--border); margin: 4px 8px; }
 
   .nav-cta {
     background: var(--blue-primary);
@@ -635,7 +714,19 @@
     <span class="logo-divider"></span><span class="logo-text">RAST<span>IX</span></span>
   </a>
   <ul>
-    <li><a href="#services">Services</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services</button>
+      <div class="nav-dropdown-menu" role="menu">
+        <a href="/cloud" role="menuitem"><span class="menu-icon">☁️</span> Cloud</a>
+        <a href="/infrastructure" role="menuitem"><span class="menu-icon">🏗️</span> Infrastructure</a>
+        <a href="/cybersecurity" role="menuitem"><span class="menu-icon">🔐</span> Cybersecurity</a>
+        <a href="/ai-automation" role="menuitem"><span class="menu-icon">🤖</span> AI &amp; Automation</a>
+        <a href="/applications" role="menuitem"><span class="menu-icon">🌐</span> Applications &amp; Web</a>
+        <a href="/operations" role="menuitem"><span class="menu-icon">⚙️</span> Operations &amp; Consulting</a>
+        <div class="menu-divider"></div>
+        <a href="#services" role="menuitem"><span class="menu-icon">↓</span> All services</a>
+      </div>
+    </li>
     <li><a href="#why">About</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
@@ -877,6 +968,21 @@
 </footer>
 
 <script>
+  // Dropdown toggle for touch devices
+  var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+  var dropdown = document.querySelector('.nav-dropdown');
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = dropdown.classList.toggle('open');
+      dropdownToggle.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', function() {
+      dropdown.classList.remove('open');
+      dropdownToggle.setAttribute('aria-expanded', false);
+    });
+  }
+
   var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
